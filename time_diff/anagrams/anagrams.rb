@@ -7,7 +7,7 @@ def first_anagram?(str1, str2)
   permutations.include?(str2)
 end
 
-# O(n) n = str1.length
+# O(n^2) n = str1.length
 def second_anagram?(str1, str2)
   str2_arr = str2.split('')
   str1.split('').each do |char|
@@ -21,7 +21,8 @@ end
 def third_anagram?(str1, str2)
   str1.split('').sort == str2.split('').sort
 end
-O(n)
+
+# O(n) n = larger string length
 def fourth_anagram?(str1, str2)
   hash = Hash.new(0)
   str1.each_char do |char|
@@ -32,5 +33,5 @@ def fourth_anagram?(str1, str2)
     hash[char] -= 1
   end
   print hash
-  !hash.any? {|k, v| v != 0}
+  hash.all? {|k, v| v == 0}
 end
